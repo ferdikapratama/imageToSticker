@@ -31,7 +31,7 @@ const startServer = async (from) => {
 	create('Imperial', serverOption)
 	.then(client => {
 		console.log('[DEV] Red Emperor')
-		console.log('[SERVER] Server Started!')
+		console.log('[SERVER] Server Ha Started!')
 
             // Force it to keep the current session
             client.onStateChanged(state => {
@@ -63,7 +63,7 @@ async function msgHandler (client, message) {
 				switch (cmd[0]) {
 					case '#menu':
 					case '#help':
-					client.sendText(from, 'Menu: \n1. #sticker / #stiker: kirim gambar dengan caption atau balas gambar yang sudah dikirim. \n2. #sticker / #stiker spasi url gambar (contoh: #stiker https://avatars2.githubusercontent.com/u/24309806) \n3. #tiktok spasi url (contoh: #tiktok https://www.tiktok.com/@yogaGanteng/video/685521...)')
+					client.sendText(from, 'Menu: \n1. #sticker / #stiker: kirim gambar dengan caption tersebut atau reply gambar yang sudah kamu dikirim. \n2. #sticker / #stiker spasi url gambar (contoh: #stiker https://avatars2.githubusercontent.com/u/24309806) \n3. #tiktok spasi url (contoh: #tiktok https://www.tiktok.com/@yogaGanteng/video/685521...)')
 					break
 					case '#sticker':
 					case '#stiker':
@@ -81,7 +81,7 @@ async function msgHandler (client, message) {
 							await client.sendStickerfromUrl(from, url, { method: 'get' })
 							.catch(err => console.log('Caught exception: ', err))
 						} else {
-							client.sendText(from, 'Maaf, Url yang kamu kirim tidak valid')
+							client.sendText(from, 'Maaf, Url yang kamu kirimkan tidak valid')
 						}
 					} else {
 						client.sendText(from, 'Tidak ada gambar! Untuk membuat sticker kirim gambar dengan caption #stiker')
@@ -97,7 +97,7 @@ async function msgHandler (client, message) {
 							.then(await client.sendText(from, `Metadata:\nUsername: ${videoMeta.authorMeta.name} \nMusic: ${videoMeta.musicMeta.musicName} \nView: ${videoMeta.playCount.toLocaleString()} \nLike: ${videoMeta.diggCount.toLocaleString()} \nComment: ${videoMeta.commentCount.toLocaleString()} \nShare: ${videoMeta.shareCount.toLocaleString()} \nCaption: ${videoMeta.text.trim() ? videoMeta.text : '-'} \n\nDonasi: bantu aku beli dimsum dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`))
 							.catch(err => console.log('Caught exception: ', err))
 						} else {
-							client.sendText(from, 'Maaf, Url yang kamu kirim tidak valid')
+							client.sendText(from, 'Maaf, Url yang kamu kirimkan tidak valid')
 						}
 					}
 					break
@@ -120,7 +120,7 @@ async function msgHandler (client, message) {
 				}
 			} else {
 				if (!isGroupMsg) console.log('[RECV]', color(time, 'yellow'), 'Message from', color(pushname))
-					if (isGroupMsg) console.log('[RECV]', color(time, 'yellow'), 'Message from', color(pushname), 'in', color(name))
+					if (isGroupMsg) console.log('[RECV]', color(time, 'yellow'), 'This message from', color(pushname), 'in', color(name))
 				}
 		} catch (err) {
 			console.log(color('[ERROR]', 'red'), err)
